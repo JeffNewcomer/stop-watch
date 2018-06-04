@@ -1,0 +1,21 @@
+body {
+  background: gray;
+  color: black;
+  font-family: "Times New Roman", Times, serif;
+}
+
+.container {
+  padding: 200px;
+  text-align: center;
+}
+
+h1 {
+  font-style: italic;
+}
+
+button {
+  height: 42px;
+  width: 155px;
+  border-radius: 2px;
+  font-size: 25px;
+}
