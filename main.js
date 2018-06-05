@@ -25,3 +25,10 @@ function increaseSeconds( ) {                                                   
   var updateCountOnSite = document.getElementById('secondCounter')                 // updates the DOM with the current value of seconds
   updateCountOnSite.textContent = seconds
 }
+//not sure if code below is correct as it breaks everything currently
+  document.querySelector('#resetbutton').addEventListener("click", function() {
+    stopWatchRunning = false
+    clearInterval(intervalID)
+    intervalID = null
+    seconds = 0
+  }
