@@ -1,6 +1,7 @@
 
 var stopWatchRunning = false
 var intervalID = null
+document.querySelector('#resetbutton').style.visibility = "hidden";               // hides the reset button
 
 document.querySelector('#startbutton').addEventListener("click", function() {     // event listener place on the start button
 
@@ -8,7 +9,8 @@ document.querySelector('#startbutton').addEventListener("click", function() {   
     stopWatchRunning = true
     var interval = setInterval(increaseSeconds, 1000)                            // runs the increaseSeconds function once every second
     intervalID = interval
-    document.querySelector('#startbutton').src = "pausewhite.png"; // pause
+    document.querySelector('#startbutton').src = "pausewhite.png";
+    document.querySelector('#resetbutton').style.visibility = "visible";
   } else {
     stopWatchRunning = false
     clearInterval(intervalID)
@@ -24,7 +26,15 @@ function increaseSeconds( ) {                                                   
   updateCountOnSite.textContent = seconds
 }
 
-//use an if then statement
-//use clearInterval
-//needs to flip from true to false?
-//onclick?
+// code for the reset button function
+document.querySelector('#resetbutton').addEventListener("click", function() {
+  if (stopWatchRunning === false){
+  seconds = 0
+  var updateCountOnSiteReset = document.getElementById('secondCounter')                 // updates the DOM with the current value of seconds
+  updateCountOnSiteReset.textContent = seconds
+  stopWatchRunning = false
+  clearInterval(intervalID)
+  intervalID = null
+  document.querySelector('#resetbutton').style.visibility = "hidden";
+  }
+})
