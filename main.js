@@ -26,9 +26,12 @@ function increaseSeconds( ) {                                                   
   updateCountOnSite.textContent = seconds
 }
 //not sure if code below is correct as it breaks everything currently
-  document.querySelector('#resetbutton').addEventListener("click", function() {
-    stopWatchRunning = false
-    clearInterval(intervalID)
-    intervalID = null
-    seconds = 0
+document.querySelector('#resetbutton').addEventListener("click", function() {
+  if (stopWatchRunning === true){
+  stopWatchRunning = false
+  clearInterval(intervalID)
+  intervalID = null
+  seconds = 0
+  document.querySelector('#resetbutton').style.visibility = "hidden";
   }
+}
