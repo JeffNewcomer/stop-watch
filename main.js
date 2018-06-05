@@ -1,7 +1,7 @@
 
 var stopWatchRunning = false
 var intervalID = null
-document.querySelector('#resetbutton').style.visibility = "hidden";
+document.querySelector('#resetbutton').style.visibility = "hidden";               // hides the reset button
 
 document.querySelector('#startbutton').addEventListener("click", function() {     // event listener place on the start button
 
@@ -25,13 +25,16 @@ function increaseSeconds( ) {                                                   
   var updateCountOnSite = document.getElementById('secondCounter')                 // updates the DOM with the current value of seconds
   updateCountOnSite.textContent = seconds
 }
-//not sure if code below is correct as it breaks everything currently
+
+// code for the reset button function
 document.querySelector('#resetbutton').addEventListener("click", function() {
-  if (stopWatchRunning === true){
+  if (stopWatchRunning === false){
+  seconds = 0
+  var updateCountOnSiteReset = document.getElementById('secondCounter')                 // updates the DOM with the current value of seconds
+  updateCountOnSiteReset.textContent = seconds
   stopWatchRunning = false
   clearInterval(intervalID)
   intervalID = null
-  seconds = 0
   document.querySelector('#resetbutton').style.visibility = "hidden";
   }
-}
+})
