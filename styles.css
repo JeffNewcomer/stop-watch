@@ -13,3 +13,7 @@ h1 {
   font-style: italic;
   font-size: 100px;
 }
+
+#resetbutton {
+  visibility: hidden;
+}
