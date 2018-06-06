@@ -2,17 +2,18 @@
 var stopWatchRunning = false
 var intervalID = null
 var $input = document.getElementById('input')
-document.querySelector('#resetbutton').style.visibility = "hidden";               // hides the reset button
+document.querySelector('#resetbutton').style.visibility = "hidden";             // hides the reset button
 
 document.querySelector('#startbutton').addEventListener("click", function() {   // event listener place on the start button
 
-  if (stopWatchRunning === false){                                               //  runs the timer
+  if (stopWatchRunning === false){                                              //  runs the timer
     stopWatchRunning = true
     var interval = setInterval(increaseSeconds, 1000)                           // runs the increaseSeconds function once every second
     intervalID = interval
     document.querySelector('#startbutton').src = "pausewhite.png";
     document.querySelector('#resetbutton').style.visibility = "visible";
-  } else {                                                                       // pauses the timer
+    document.querySelector('#secondCounter').style.color = 'black';
+  } else {                                                                      // pauses the timer
     stopWatchRunning = false
     clearInterval(intervalID)
     intervalID = null
@@ -27,7 +28,6 @@ function increaseSeconds( ) {                                                   
   updateCountOnSite.textContent = seconds
 
   //timelimit feature
-
   var inputValueToNumber = Number($input.value)
 
   if (($input.value!=="") && (seconds === inputValueToNumber)){
@@ -35,6 +35,7 @@ function increaseSeconds( ) {                                                   
     clearInterval(intervalID)
     intervalID = null
     document.querySelector('#startbutton').src = "playblue.png";
+    document.querySelector('#secondCounter').style.color = 'darkred';
   }
 }
 
@@ -43,11 +44,12 @@ document.querySelector('#resetbutton').addEventListener("click", function() {
   if (stopWatchRunning === false){
   seconds = 0
   $input.value = ""
-  var updateCountOnSiteReset = document.getElementById('secondCounter')                 // updates the DOM with the current value of seconds
+  var updateCountOnSiteReset = document.getElementById('secondCounter')         // updates the DOM with the current value of seconds
   updateCountOnSiteReset.textContent = seconds
   stopWatchRunning = false
   clearInterval(intervalID)
   intervalID = null
   document.querySelector('#resetbutton').style.visibility = "hidden";
+  document.querySelector('#secondCounter').style.color = 'black';
   }
 })
